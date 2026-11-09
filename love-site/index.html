@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#fce4ec">
+  <meta name="description" content="100 Reasons I Love You — A romantic surprise for Azra Baby">
+  <title>100 Reasons I Love You — Azra Baby</title>
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient background glow lights -->
+  <div class="ambient-glow glow-top-left" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom-right" aria-hidden="true"></div>
+
+  <!-- Floating Antigravity Photo Layer -->
+  <div id="antigravity-container" aria-label="Floating memories gallery"></div>
+
+  <!-- Confetti Canvas for Finale Celebration -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- Main Application Wrapper -->
+  <div id="app-root">
+
+    <!-- Top Navigation & Controls Header -->
+    <header class="app-header">
+      <div class="brand-badge">
+        <span class="brand-heart" aria-hidden="true">♥</span>
+        <span class="brand-title">For Azra Baby</span>
+      </div>
+
+      <div class="header-actions">
+        <!-- Audio Music Toggle (hidden if song.mp3 is missing) -->
+        <button id="music-toggle-btn" class="icon-btn" aria-label="Toggle background music" style="display: none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </button>
+
+        <!-- Favorites Drawer Toggle Button -->
+        <button id="favorites-toggle-btn" class="icon-btn" aria-label="View saved favorites">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span id="favorites-badge" class="badge-count" style="display: none;">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Views Container -->
+    <main class="views-container">
+
+      <!-- ===================================================================
+           1. Welcome Screen
+           =================================================================== -->
+      <section id="welcome-screen" class="screen" aria-label="Welcome">
+        <div class="welcome-card">
+          <div class="welcome-heart-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+
+          <h1 class="welcome-title">
+            Hey <span class="name-highlight">Azra Baby</span>,
+          </h1>
+          <p class="welcome-subtitle">I made something just for you...</p>
+
+          <button id="start-btn" class="btn-primary" aria-label="Open 100 Reasons">
+            <span>Open Our Story</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+
+          <div class="welcome-hint">
+            <span>Tap floating polaroids anytime to expand them</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           2. Reasons Deck Screen
+           =================================================================== -->
+      <section id="deck-screen" class="screen hidden" aria-label="100 Reasons Deck">
+        
+        <!-- Progress Bar & Counter -->
+        <div class="progress-container">
+          <div class="progress-header">
+            <span id="progress-counter" class="progress-counter">Reason <strong>1</strong> of 100</span>
+            <span class="progress-label">Every little thing</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-valuemin="1" aria-valuemax="100" aria-valuenow="1">
+            <div id="progress-bar-fill" class="progress-bar-fill"></div>
+          </div>
+        </div>
+
+        <!-- Glassmorphism Card Deck -->
+        <div class="deck-card-wrapper">
+          <article id="reason-card" class="reason-card" tabindex="0" aria-live="polite">
+            
+            <!-- Card Top Metadata -->
+            <div class="card-top">
+              <span id="reason-category" class="card-category-pill">Your Warmth</span>
+              <span id="reason-number" class="card-number-badge">#001</span>
+            </div>
+
+            <!-- Card Body / Reason Text -->
+            <div class="card-body">
+              <blockquote class="reason-text">
+                <span class="card-quote-mark" aria-hidden="true">“</span>
+                <span id="reason-text">The radiant warmth of your smile...</span>
+                <span class="card-quote-mark" aria-hidden="true">”</span>
+              </blockquote>
+            </div>
+
+            <!-- Card Bottom Bar (Favorite Heart) -->
+            <div class="card-bottom">
+              <button id="favorite-btn" class="favorite-btn" aria-label="Add to favorites">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <span>Save Favorite</span>
+              </button>
+
+              <span style="font-size: 0.8rem; color: var(--text-light); font-style: italic;">With all my love</span>
+            </div>
+
+          </article>
+        </div>
+
+        <!-- Navigation Action Buttons -->
+        <div class="deck-nav-bar">
+          <button id="prev-btn" class="nav-arrow-btn" aria-label="Previous reason">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Previous</span>
+          </button>
+
+          <button id="surprise-btn" class="surprise-btn" aria-label="Surprise me with a random reason">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"></path>
+              <path d="m14 7 3 3"></path>
+              <path d="M5 6v4"></path>
+              <path d="M19 14v4"></path>
+              <path d="M10 2v2"></path>
+              <path d="M7 8H3"></path>
+              <path d="M21 16h-4"></path>
+              <path d="M11 3H9"></path>
+            </svg>
+            <span>Surprise Me</span>
+          </button>
+
+          <button id="next-btn" class="nav-arrow-btn" aria-label="Next reason">
+            <span>Next Reason</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Gesture & Keyboard Hints -->
+        <div class="deck-tips" aria-hidden="true">
+          <span>Swipe or use ← → arrow keys</span>
+          <span>•</span>
+          <span>Tap photos to zoom</span>
+        </div>
+
+      </section>
+
+      <!-- ===================================================================
+           3. Finale Screen (Celebration & Love Note)
+           =================================================================== -->
+      <section id="finale-screen" class="screen hidden" aria-label="Finale Celebration">
+        <div class="finale-card">
+          <div class="finale-crown" aria-hidden="true">👑</div>
+          <div class="finale-badge">100 Reasons and a Lifetime More</div>
+
+          <h2 class="finale-title">To My Dearest Azra Baby,</h2>
+
+          <div class="finale-note">
+            <p>
+              From the very moment you entered my life, every day became brighter, softer, and endlessly more meaningful.
+            </p>
+            <p style="margin-top: 14px;">
+              These 100 reasons are only a tiny glimpse of why I love you so deeply. The real truth is that my love for you can never be counted, measured, or contained in words.
+            </p>
+            <p style="margin-top: 14px;">
+              I love you for who you are, for the laughter we share, for the comfort of your embrace, and for every quiet moment that feels like home. Thank you for being my heart, my peace, and my favorite adventure.
+            </p>
+            <p style="margin-top: 14px; font-weight: 600;">
+              I choose you today, tomorrow, and every single day for the rest of my life.
+            </p>
+            <span class="finale-signoff">Forever & Always Yours ♥</span>
+          </div>
+
+          <div class="finale-actions">
+            <button id="restart-btn" class="btn-primary" aria-label="Read reasons again from the beginning">
+              <span>Read Them Again</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="1 4 1 10 7 10"></polyline>
+                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+              </svg>
+            </button>
+            <button id="finale-favorites-btn" class="btn-secondary" aria-label="View favorited reasons">
+              <span>View My Favorites</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- ===================================================================
+       Lightbox Modal for Floating Photos
+       =================================================================== -->
+  <div id="lightbox-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Photo Lightbox">
+    <div class="lightbox-content">
+      <button id="lightbox-close" class="modal-close-btn" aria-label="Close photo preview">✕</button>
+      <div class="lightbox-polaroid">
+        <div class="lightbox-img-wrapper">
+          <img id="lightbox-img" class="lightbox-img" src="" alt="Azra Baby Memory" />
+        </div>
+        <div id="lightbox-caption" class="lightbox-caption">Azra Baby ♥</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       Favorites Modal / Drawer
+       =================================================================== -->
+  <div id="favorites-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Saved Favorites">
+    <div class="favorites-drawer">
+      <div class="drawer-header">
+        <h3 class="drawer-title">
+          <span>Your Favorite Reasons</span>
+          <span style="color: var(--rose-primary); font-size: 1.2rem;">♥</span>
+        </h3>
+        <button id="favorites-close" class="modal-close-btn" style="position: static;" aria-label="Close favorites">✕</button>
+      </div>
+      <div id="favorites-list" class="drawer-body">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/reasons.js"></script>
+  <script src="js/photos.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
+

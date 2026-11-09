@@ -1,0 +1,9 @@
+{
+  "name": "100-reasons-workspace",
+  "version": "1.0.0",
+  "scripts": {
+    "photos": "node love-site/scripts/scan-photos.js",
+    "start": "npx serve -l 3000 love-site"
+  }
+}
+

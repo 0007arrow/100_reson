@@ -1,0 +1,19 @@
+{
+  "name": "100-reasons-love-site",
+  "version": "1.0.0",
+  "description": "100 Reasons I Love You - A romantic surprise website for Azra Baby",
+  "scripts": {
+    "photos": "node scripts/scan-photos.js",
+    "start": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "love",
+    "romantic",
+    "100-reasons",
+    "anniversary",
+    "surprise"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+
